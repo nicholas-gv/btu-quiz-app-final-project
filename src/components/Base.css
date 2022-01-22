@@ -14,7 +14,17 @@ h1 {
     background-color: #fff;
     width: 35vw;
     border-radius: 10px;
-    height: 85vh;
+    height: 600px;
+    animation: fadein 0.3s;
+}
+
+@keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
 }
 
 .main-text {
