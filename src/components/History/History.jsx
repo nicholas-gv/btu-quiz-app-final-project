@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../Base.css";
 import ContextMenu from "./ContextMenu";
 
+
 function History() {
     const [history, setHistory] = useState();
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ function History() {
     return (
         <div className="page">
             <h1>History</h1>
-            <button onClick={() => navigate("/")}>Home</button>
+            <button className="btn-orange" onClick={() => navigate("/")}>Home</button>
             <ul>
                 {history && history.map((el, i) => (
                     <div key={i} className="history-entry">

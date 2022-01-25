@@ -3,6 +3,7 @@ import "./Quiz.css"
 import "../Base.css"
 import { useNavigate } from "react-router-dom";
 
+
 const Popup = (props) => {
     const navigate = useNavigate();
 

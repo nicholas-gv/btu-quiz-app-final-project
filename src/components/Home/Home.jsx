@@ -9,13 +9,13 @@ function Home() {
 
     useEffect(() => {
         if (localStorage.getItem("history")) {
-            let temp = JSON.parse(localStorage.getItem("history"));
-            let tempLatest = temp[0];
-            setLatest(temp[0]);
-            for (let i = 0; i < temp.length; i++) {
-                tempLatest = (Date.parse(tempLatest.date)<Date.parse(temp[i].date)) ? temp[i] : tempLatest;
+            let history = JSON.parse(localStorage.getItem("history"));
+            let latest = history[0];
+            setLatest(history[0]);
+            for (let i = 0; i < history.length; i++) {
+                latest = (Date.parse(latest.date)<Date.parse(history[i].date)) ? history[i] : latest;
             }
-            setLatest(tempLatest)
+            setLatest(latest);
         } 
     }, [])
     
@@ -24,10 +24,10 @@ function Home() {
         <div className="page">
             <h1>Quiz Application</h1>
             <div className="main-text">
-                <button onClick={() => navigate("/quiz")}>Start Quiz</button>
+                <button className="btn-orange" onClick={() => navigate("/quiz")}>Start Quiz</button>
                 <p>latest quiz result:</p>
                 <p>{latest && latest.points}pts | {latest && latest.date}</p>
-                <button onClick={() => navigate("/history")}>Check Your History</button>
+                <button className="btn-orange" onClick={() => navigate("/history")}>Check Your History</button>
             </div>
         </div>
     );

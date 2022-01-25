@@ -5,8 +5,9 @@ import QuizQuestion from "./QuizQuestion.jsx";
 import ErrorBoundary from "../ErrorBoundary";
 import { Watch } from "react-loader-spinner";
 
+
 function Quiz() {
-    const time = Number.parseInt(new Date().getTime());
+    const time = new Date().getTime();
     const [questions] = useFetch({
         key: "questions",
         currentTime: time,
