@@ -1,5 +1,5 @@
 h1 {
-    margin: 0px auto;
+    margin: 15px auto;
     font-size: 46px;
     color: #ff9500;
 }
@@ -12,10 +12,22 @@ h1 {
     text-align: center;
     padding: 50px;
     background-color: #fff;
-    width: 35vw;
+    width: 38vw;
     border-radius: 10px;
-    height: 600px;
+    height: 85vh;
     animation: fadein 0.3s;
+}
+
+@media only screen and (max-width: 1000px) {
+  .page {
+    width: 55vw;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .page {
+    width: 65vw;
+  }
 }
 
 @keyframes fadein {
@@ -25,6 +37,22 @@ h1 {
     to {
       opacity: 1;
     }
+}
+
+.btn-white {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 7px;
+  margin: 15px 2px;
+  border: none;
+}
+
+.btn-orange {
+  background-color: #ff9500;
+  border-radius: 4px;
+  padding: 7px;
+  margin: 15px 2px;
+  border: none;
 }
 
 .main-text {
