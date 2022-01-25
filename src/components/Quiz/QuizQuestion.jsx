@@ -61,7 +61,7 @@ const QuizQuestion = (props) => {
         }
 
         let questionsAmount = props.data.questions.length;
-        let progressBarShare = ((activeQuestion+1)/questionsAmount)*100;
+        let progressBarShare = (activeQuestion+1)/questionsAmount*100;
         document.getElementById("gradbox").style.backgroundImage = 
             `linear-gradient(to right, #ff9500 ${progressBarShare}%,rgba(0,0,0,0)${progressBarShare}%)`;
     }
