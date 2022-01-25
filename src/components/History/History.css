@@ -1,0 +1,15 @@
+.list {
+    margin: 0 auto;
+    width: 80px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#context-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-entry {
+    display: flex;
+}
