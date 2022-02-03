@@ -14,13 +14,13 @@ const ContextMenu = () => {
         }
 
         // კურსორის კოორდინატებით სწორი პოზიციის დადგენა
-        let posH = (e.clientY/window.innerHeight*100)+6;
+        let posH = e.clientY/window.innerHeight*100;
         let posW = e.clientX/window.innerWidth*100;
         let contextMenuAura = document.createElement("div");
         let contextMenu = document.createElement("div");
         contextMenuAura.appendChild(contextMenu);
         contextMenuAura.id = "context-menu-aura";
-        let style = `position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height:100%; background-color: rgba(0,0,0,0)`
+        let style = `width: 100%; height: 100%; background:rgba(0,0,0,0.2); position: fixed; top: 0; left: 0; z-index: 10;`
         contextMenuAura.setAttribute("style", style);
         
         // მარცხენა ღილაკით წაშლა
@@ -39,7 +39,7 @@ const ContextMenu = () => {
         }
 
         contextMenu.setAttribute("style", `position: absolute; z-index: 1; left: 0; top: 0;\
-            margin-top: ${posH}%; margin-left: ${posW}%; width: 100px;\
+            top: ${posH}%; left: ${posW}%; width: 100px;\
             height: 50px; border: 3px solid #fff; background-color:${e.target.style.backgroundColor}`)
         contextMenu.id = 'context-menu'
         contextMenu.textContent = e.target.textContent;
@@ -55,7 +55,7 @@ const ContextMenu = () => {
             }
         }
         
-        document.getElementsByTagName("ul")[0].appendChild(contextMenuAura);
+        document.getElementById("root").appendChild(contextMenuAura);
         contextMenu.appendChild(removeBtn);
     }
     
