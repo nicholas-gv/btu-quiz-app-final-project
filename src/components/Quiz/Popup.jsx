@@ -20,12 +20,9 @@ const Popup = (props) => {
 
         let key = "history";
         let item = {
-            points: props.data.points,
-            date: props.data.date
+            points: props.points,
+            date: props.date
         };
-
-        // Date.parse(props.data.date) = 1643095503000 (Date)
-        // props.data.date = 1/25/2022, 11:25:03 AM (string)
 
         if (!localStorage.getItem(key)) {
             localStorage.setItem(key, JSON.stringify([item]));

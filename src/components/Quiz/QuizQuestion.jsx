@@ -4,8 +4,7 @@ import "./Quiz.css";
 import QuizBooleanAnswer from "./QuizBooleanAnswer.jsx";
 import QuizMultipleAnswer from "./QuizMultipleAnswer.jsx";
 import QuizSingleAnswer from "./QuizSingleAnswer.jsx";
-import { useNavigate } from "react-router-dom";
-import Popup from "./Popup";
+import QuizResults from "./QuizResults";
 
 
 const QuizQuestion = (props) => {
@@ -15,7 +14,7 @@ const QuizQuestion = (props) => {
     const [points, setPoints] = useState(0);
     const [date, setDate] = useState();
     const [isQuizDone, setIsQuizDone] = useState(false);
-    const navigate = useNavigate();
+    
 
     const handleNext = () => {
         let questionsAmount = props.data.questions.length;
@@ -122,21 +121,8 @@ const QuizQuestion = (props) => {
         }
     }
 
-    const handlePopupButtonClick = () => {
-        document.getElementsByClassName("popup-main")[0].style.display="block";
-        document.getElementsByClassName("main")[0].style.display="block";
-    }
-
-
     if (isQuizDone) {
-        return (
-            <>
-                <p> {points}/{props.data.questions.length}pts | {date} </p>
-                <Popup data={{points,date}}></Popup>
-                <button className="btn-orange" onClick={handlePopupButtonClick}>Try Again?</button>
-                <button className="btn-orange" onClick={() => navigate("/history")}>See Attempts History</button>
-            </>
-        )
+        return <QuizResults data={{points,date}} questions={props.data.questions}></QuizResults>
     }
 
     return (
@@ -180,6 +166,9 @@ const QuizQuestion = (props) => {
                 onClick={(chosenAnswers && questionUnanswered) ? handleSubmit : undefined }>Submit Answer
             </button>
             <button className="btn-white" id="nextBtn" onClick={handleNext} style={{display: "none"}}>Next</button>
+            <div id="gradbox">
+                <p style={{color:"white"}}>{activeQuestion}/{props.data.questions.length}</p>
+            </div>
         </div>
     );
 }

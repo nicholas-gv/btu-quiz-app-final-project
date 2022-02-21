@@ -12,15 +12,13 @@ import {
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/quiz" element={<Quiz/>}/>
-            <Route path="/history" element={<History/>}/>
-          </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/quiz" element={<Quiz/>}/>
+          <Route path="/history" element={<History/>}/>
+        </Routes>
+    </BrowserRouter>
   );
 }
 

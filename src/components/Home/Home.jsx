@@ -21,13 +21,16 @@ function Home() {
     
 
     return (
-        <div className="page">
-            <h1>Quiz Application</h1>
-            <div className="main-text">
+        <div className="page home-grid">
+            <h1 className="page-title">Quiz Application</h1>
+            <div className="home-page-left-div">
                 <button className="btn-orange" onClick={() => navigate("/quiz")}>Start Quiz</button>
                 <p>latest quiz result:</p>
                 <p>{latest && latest.points}pts | {latest && latest.date}</p>
                 <button className="btn-orange" onClick={() => navigate("/history")}>Check Your History</button>
+            </div>
+            <div className="home-page-right-div">
+                <div></div>
             </div>
         </div>
     );

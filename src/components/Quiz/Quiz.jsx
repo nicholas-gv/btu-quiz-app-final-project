@@ -11,7 +11,8 @@ function Quiz() {
     const [questions] = useFetch({
         key: "questions",
         currentTime: time,
-        url: "http://my-json-server.typicode.com/DanielBarbakadze/Advanced-JS-and-React-Basics/db"
+        url: "db.json"
+        // url: "http://my-json-server.typicode.com/DanielBarbakadze/Advanced-JS-and-React-Basics/db"
     });
 
     if (!questions) {
@@ -28,8 +29,7 @@ function Quiz() {
         <ErrorBoundary>
             <div className="page">
                 <h1 id="page-title">Quiz</h1>
-                <QuizQuestion data={questions} id="d1" question="question1"></QuizQuestion>
-                <div id="gradbox"> </div>
+                <QuizQuestion data={questions} id="d1"></QuizQuestion>
             </div>
         </ErrorBoundary>
     );

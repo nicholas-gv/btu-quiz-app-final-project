@@ -4,18 +4,25 @@ h1 {
     color: #ff9500;
 }
 
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-grid {
+  display:grid;
+  grid: 100px / auto auto;
+}
+
 .page {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 50px;
-    background-color: #fff;
-    width: 38vw;
-    border-radius: 10px;
-    height: 85vh;
-    animation: fadein 0.3s;
+  margin-top: 5vh;
+  padding: 50px;
+  background-color: #fff;
+  width: 60vw;
+  border-radius: 10px;
+  height: 650px;
+  animation: fadein 0.3s;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -49,14 +56,28 @@ h1 {
 
 .btn-orange {
   background-color: #ff9500;
-  border-radius: 4px;
-  padding: 7px;
-  margin: 15px 2px;
+  padding: 5px 15px;
+  border-radius: 6px;
   border: none;
+  transition: 0.3s;
+  color: #fff;
+  font-size: 15px;
 }
 
-.main-text {
-    margin: 60px 0px 0px 20px;
-    text-align: left;
-    line-height: 1.5;
+.btn-orange:hover, .btn-orange:after, .btn-orange:active, .btn-orange:focus {
+  background-color: #e68600;
+}
+
+.page-title {
+  grid-area: 1 / 1 / 1 / span 2;
+}
+
+.home-page-left-div {
+  text-align: left;
+  padding: 20px;
+}
+
+.home-page-right-div {
+  text-align: right;
+  padding: 20px;
 }
