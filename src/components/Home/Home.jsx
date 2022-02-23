@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../Base.css";
 import { useNavigate } from "react-router-dom";
+import quizImage from "./images/quiz1.png"
 
 
 function Home() {
     let [latest, setLatest] = useState({});
+    let [selectedQuiz, setSelectedQuiz] = useState();
     let navigate = useNavigate();
+    const images = require.context('./images', true);
 
     useEffect(() => {
         if (localStorage.getItem("history")) {
@@ -19,18 +22,46 @@ function Home() {
         } 
     }, [])
     
+    const handleSelectChange = (e) => {
+        setSelectedQuiz(e.target.value);
+        quizImage= images(`./${e.target.value}.png`)
+        console.log(quizImage);
+    }
 
     return (
-        <div className="page home-grid">
+        <div className="page grid-with-title">
             <h1 className="page-title">Quiz Application</h1>
-            <div className="home-page-left-div">
-                <button className="btn-orange" onClick={() => navigate("/quiz")}>Start Quiz</button>
-                <p>latest quiz result:</p>
-                <p>{latest && latest.points}pts | {latest && latest.date}</p>
-                <button className="btn-orange" onClick={() => navigate("/history")}>Check Your History</button>
+            <div className="home-page-quiz-selection">
+                <select onChange={handleSelectChange} name="quizes" id="">
+                    <option value="quiz1">Quiz #1</option>
+                    <option value="quiz2">Quiz #2</option>
+                    <option value="quiz3">Quiz #3</option>
+                    <option value="quiz4">Quiz #4</option>
+                    <option value="quiz5">Quiz #5</option>
+                </select>
+                <img className="quiz-primary-image" src={quizImage} alt="quiz-thumbnail" />
+                <p id="quiz-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ad deserunt porro similique! Incidunt voluptate ullam 
+                    officiis vero illum quo. Minus voluptatum enim dicta
+                    consequuntur iure corrupti nostrum nisi, eligendi 
+                    repudiandae ullam praesentium quisquam aut eos vero eaque!
+                    Aliquam sit doloremque ut, incidunt laboriosam,
+                    consequatur nobis unde cumque neque ad suscipit?
+                </p>
+                {/* <ul className="home-page-list">
+                    <li className="home-page-list-item">Quiz #1</li>
+                    <li className="home-page-list-item">Quiz #2</li>
+                    <li className="home-page-list-item">Quiz #3</li>
+                    <li className="home-page-list-item">Quiz #4</li>
+                    <li className="home-page-list-item">Quiz #5</li>
+                </ul> */}
             </div>
-            <div className="home-page-right-div">
-                <div></div>
+            <div className="home-page-right-content">
+                <button className="btn-orange" onClick={() => navigate("/quiz")}>Start Quiz</button>
+                <button className="btn-orange-outline" onClick={() => navigate("/history")}>Check Your History</button>
+                <p>Latest quiz result:</p>
+                <p>{latest && latest.points}/{latest && latest.totalQuestions}pts | {latest && latest.date}</p>
             </div>
         </div>
     );

@@ -21,6 +21,7 @@ const Popup = (props) => {
         let key = "history";
         let item = {
             points: props.points,
+            totalQuestions: props.totalQuestions,
             date: props.date
         };
 

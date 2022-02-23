@@ -15,17 +15,19 @@ function History() {
     }, []);
 
     return (
-        <div className="page">
-            <h1>History</h1>
-            <button className="btn-orange" onClick={() => navigate("/")}>Home</button>
-            <ul>
-                {history && history.map((el, i) => (
-                    <div key={i} className="history-entry">
-                        <li >{el.points}pts | {el.date}</li>
-                        <ContextMenu></ContextMenu>
-                    </div>
-                ))}
-            </ul>
+        <div className="page grid-with-title">
+            <h1 className="page-title">History</h1>
+            <div>
+                <button className="btn-orange" onClick={() => navigate("/")}>Home</button>
+                <ul>
+                    {history && history.map((el, i) => (
+                        <div key={i} className="history-entry">
+                            <li >{el.points}/{el.totalQuestions}pts | {el.date}</li>
+                            <ContextMenu></ContextMenu>
+                        </div>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }

@@ -18,9 +18,9 @@ const QuizResults = (props) => {
     return (     
         <>
             <p> {props.data.points}/{props.questions.length}pts | {props.data.date} </p>
-            <Popup points={props.data.points} date={props.data.date}></Popup>
+            <Popup points={props.data.points} date={props.data.date} totalQuestions={props.questions.length}></Popup>
             <button className="btn-orange" onClick={handlePopupButtonClick}>Try Again?</button>
-            <button className="btn-orange" onClick={() => navigate("/history")}>See Attempts History</button>
+            <button className="btn-orange-outline" onClick={() => navigate("/history")}>See Attempts History</button>
         </>
     );
 }

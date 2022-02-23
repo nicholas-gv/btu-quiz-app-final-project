@@ -1,13 +1,14 @@
 import React from "react";
 import "./History.css"
-
+import "../Base.css"
 
 const ContextMenu = () => {
 
     const handleListItemContextMenu = (e) => {
         e.preventDefault();
         
-        const identifier = e.target.parentElement.parentElement.parentElement.children[0].textContent.slice(7);
+        const identifier = e.target.parentElement.parentElement.parentElement.children[0].textContent.slice(9);
+        console.log(identifier)
         // მხოლოდ ერთი კონტექტ მენიუ არსებობდეს
         if (document.getElementById("context-menu")) {
             document.getElementById("context-menu").remove();
