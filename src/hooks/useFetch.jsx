@@ -3,22 +3,27 @@ import { useState, useEffect } from "react";
 
 const useFetch = (data) => {
     const [questionsResponse, setQuestions] = useState();
+    
+    if (data.quiz===null) data.quiz="quiz1";
 
     useEffect(() => {
-        if (!localStorage.getItem(data.key) || JSON.parse(localStorage.getItem(data.key)).expiry < data.currentTime ) {
-            localStorage.removeItem(data.key);
+        let quizNum = (data.quiz!==null) ? Number.parseInt(data.quiz.slice(-1))-1 : 0
+
+        if (!localStorage.getItem(data.key) || JSON.parse(localStorage.getItem(data.key)).expiry < data.currentTime 
+        || (localStorage.getItem(data.key) && JSON.parse(localStorage.getItem(data.key)).data.id!==quizNum+1) ) {
             fetch(data.url)
             .then((res) => res.json())
             .then((res) => {
                 let time = new Date().getTime();
                 let item = {
-                    data: res,
+                    data: res.quizes[quizNum],
                     expiry: time+600000
                 };
                 localStorage.setItem(data.key, JSON.stringify(item));
-                setQuestions(res);
+                setQuestions(res.quizes[quizNum]);
         });
         } else if (localStorage.getItem(data.key)) {
+            // console.log("here2")
             let res = JSON.parse(localStorage.getItem(data.key)).data;
             setQuestions(res);
         }

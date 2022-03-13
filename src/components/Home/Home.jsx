@@ -21,11 +21,10 @@ function Home() {
             setLatest(latest);
         } 
     }, [])
-    
+
     const handleSelectChange = (e) => {
         setSelectedQuiz(e.target.value);
         quizImage= images(`./${e.target.value}.png`)
-        console.log(quizImage);
     }
 
     return (
@@ -49,16 +48,9 @@ function Home() {
                     Aliquam sit doloremque ut, incidunt laboriosam,
                     consequatur nobis unde cumque neque ad suscipit?
                 </p>
-                {/* <ul className="home-page-list">
-                    <li className="home-page-list-item">Quiz #1</li>
-                    <li className="home-page-list-item">Quiz #2</li>
-                    <li className="home-page-list-item">Quiz #3</li>
-                    <li className="home-page-list-item">Quiz #4</li>
-                    <li className="home-page-list-item">Quiz #5</li>
-                </ul> */}
             </div>
             <div className="home-page-right-content">
-                <button className="btn-orange" onClick={() => navigate("/quiz")}>Start Quiz</button>
+                <button className="btn-orange" onClick={() => navigate("/quiz", {state:selectedQuiz})}>Start Quiz</button>
                 <button className="btn-orange-outline" onClick={() => navigate("/history")}>Check Your History</button>
                 <p>Latest quiz result:</p>
                 <p>{latest && latest.points}/{latest && latest.totalQuestions}pts | {latest && latest.date}</p>

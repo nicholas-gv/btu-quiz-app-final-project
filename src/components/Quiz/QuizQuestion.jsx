@@ -47,7 +47,6 @@ const QuizQuestion = (props) => {
         }
         
         
-        // console.log(JSON.stringify(li)+"==="+answer)
         if (JSON.stringify(li)===answer) {
             document.getElementsByClassName("question-box")[0].style.backgroundColor = "#56b004";
             document.getElementById("nextBtn").style.display = "inline-block";

@@ -4,14 +4,18 @@ import "./Quiz.css";
 import QuizQuestion from "./QuizQuestion.jsx";
 import ErrorBoundary from "../ErrorBoundary";
 import { Watch } from "react-loader-spinner";
+import { useLocation } from "react-router-dom";
 
 
-function Quiz() {
+function Quiz(props) {
     const time = new Date().getTime();
+    const { state } = useLocation();
     const [questions] = useFetch({
         key: "questions",
         currentTime: time,
-        url: "db.json"
+        url: "quiz.json",
+        quiz: state
+        // url: "db.json"
         // url: "http://my-json-server.typicode.com/DanielBarbakadze/Advanced-JS-and-React-Basics/db"
     });
 
