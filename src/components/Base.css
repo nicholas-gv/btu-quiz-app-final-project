@@ -8,6 +8,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .grid-with-title {
@@ -16,7 +17,6 @@ h1 {
 }
 
 .page {
-  margin-top: 5vh;
   padding: 40px;
   background-color: #fff;
   width: 70vw;
