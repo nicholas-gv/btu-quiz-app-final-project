@@ -77,9 +77,8 @@ h1 {
   transition: 0.3s;
   color: #fff;
   height: 24px;
-  font-size: 14px;
+  font-size: 15px;
 }
-
 
 .btn-orange-outline {
   background-color: #fff;
@@ -89,6 +88,17 @@ h1 {
   transition: 0.3s;
   color: #ff9500;
   height: 48px;
+  font-size: 15px;
+}
+
+.btn-orange-outline-slim {
+  background-color: #fff;
+  padding: 0px 15px;
+  border-radius: 6px;
+  border: 1px solid #ff9500;
+  transition: 0.3s;
+  color: #ff9500;
+  height: 24px;
   font-size: 15px;
 }
 
@@ -112,6 +122,10 @@ h1 {
   /* border: 1px solid blue; */
   text-align: right;
   padding: 20px;
+}
+
+.home-page-right-content > button {
+  margin: 5px;
 }
 
 .home-page-list-item {

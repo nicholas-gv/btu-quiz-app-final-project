@@ -6,8 +6,8 @@ const ContextMenu = () => {
 
     const handleListItemContextMenu = (e) => {
         e.preventDefault();
-        
-        const identifier = e.target.parentElement.children[0].textContent.slice(9);
+
+        const identifier = e.target.parentElement.textContent.slice(-21);
         // მხოლოდ ერთი კონტექტ მენიუ არსებობდეს
         if (document.getElementById("context-menu")) {
             document.getElementById("context-menu").remove();
@@ -19,13 +19,11 @@ const ContextMenu = () => {
         let contextMenuAura = document.createElement("div");
         let contextMenu = document.createElement("div");
         contextMenuAura.id = "context-menu-aura";
-        contextMenuAura.appendChild(contextMenu);
-        let style = `width: 100%; height: 100%; background:rgba(0,0,0,0); position: fixed; top: 0; left: 0; z-index: 10;`
+        let style = `width: 100vw; height: 100vw; background:rgba(0,0,0,3); position: fixed; top: 0; left: 0; z-index: 10;`
         contextMenuAura.setAttribute("style", style);
-        
+
         // მარცხენა ღილაკით წაშლა
         contextMenuAura.onclick = (e) => {
-            console.log(e.target.parentElement);
             if (e.target.parentElement.id!=="context-menu-aura"){
                 document.getElementById("context-menu-aura").remove();
             }
@@ -34,7 +32,7 @@ const ContextMenu = () => {
         // მარჯვენა ღილაკით წაშლა
         contextMenuAura.oncontextmenu = (e) => {
             e.preventDefault();
-            if (e.target.parentElement.id!=="context-menu-aura"){ 
+            if (e.target.parentElement.id!=="context-menu-aura"){
                 document.getElementById("context-menu-aura").remove();
             }
         }
@@ -58,22 +56,35 @@ const ContextMenu = () => {
 
         let cancelBtn = document.createElement("button");
         cancelBtn.textContent = "cancel";
-        cancelBtn.onclick = (e) => {
-            e.preventDefault();
-            if (e.target.parentElement.id!=="context-menu-aura"){ 
-                document.getElementById("context-menu-aura").remove();
-            }
-        }
-        
+
+
         document.getElementById("root").appendChild(contextMenuAura);
+        contextMenuAura.appendChild(contextMenu);
         contextMenu.appendChild(removeBtn);
         contextMenu.appendChild(cancelBtn);
+
     }
-    
+
+    const onDeleteClick = (e) => {
+        
+        const identifier = e.target.parentElement.textContent.slice(-21);
+        if (identifier) {
+            let history = JSON.parse(localStorage.getItem("history"));
+            let temp = history.filter((el)=>el.date!==identifier);
+            localStorage.setItem("history", JSON.stringify(temp));
+            e.target.parentElement.remove();
+        }
+
+    }
+
     return (
-        <button className="btn-orange-slim" onContextMenu={handleListItemContextMenu} 
-            >delete
-        </button>
+        <img 
+            width="15" 
+            src="trash-can-solid.svg" 
+            alt="delete-icon" 
+            onContextMenu={handleListItemContextMenu}
+            onClick={onDeleteClick}
+        />
     )
 
 }

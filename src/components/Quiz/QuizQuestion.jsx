@@ -121,7 +121,7 @@ const QuizQuestion = (props) => {
     }
 
     if (isQuizDone) {
-        return <QuizResults data={{points,date}} questions={props.data.questions}></QuizResults>
+        return <QuizResults data={{points,date}} questions={props.data.questions} quizID={props.data.id}></QuizResults>
     }
 
     return (

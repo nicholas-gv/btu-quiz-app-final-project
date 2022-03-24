@@ -20,6 +20,7 @@ const Popup = (props) => {
 
         let key = "history";
         let item = {
+            quizID: props.quizID,
             points: props.points,
             totalQuestions: props.totalQuestions,
             date: props.date
@@ -32,9 +33,9 @@ const Popup = (props) => {
             temp.push(item);
             // eslint-disable-next-line
             temp.sort((a,b) => {
-                if (a.points!==b.points) {
-                    return b.points - a.points;
-                } else if (a.points===b.points) {
+                if (a.points/a.totalQuestions!==b.points/b.totalQuestions) {
+                    return b.points/b.totalQuestions - a.points/a.totalQuestions;
+                } else if (a.points/a.totalQuestions===b.points/b.totalQuestions) {
                     return Date.parse(b.date) - Date.parse(a.date);
                 }
             });

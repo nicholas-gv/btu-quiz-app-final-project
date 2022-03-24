@@ -39,6 +39,13 @@ function Home() {
                     <option value="quiz5">Quiz #5</option>
                 </select>
                 <img className="quiz-primary-image" src={quizImage} alt="quiz-thumbnail" />
+            </div>
+            <div className="home-page-right-content">
+                <button className="btn-orange" onClick={() => navigate("/quiz", {state:selectedQuiz})}>Start Quiz</button>
+                <button className="btn-orange-outline" onClick={() => navigate("/history")}>Check Your History</button>
+                <p>Latest quiz result:</p>
+                <p>{latest && latest.points}/{latest && latest.totalQuestions}pts | {latest && latest.date}</p>
+                <br></br>
                 <p id="quiz-description">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Ad deserunt porro similique! Incidunt voluptate ullam 
@@ -48,12 +55,6 @@ function Home() {
                     Aliquam sit doloremque ut, incidunt laboriosam,
                     consequatur nobis unde cumque neque ad suscipit?
                 </p>
-            </div>
-            <div className="home-page-right-content">
-                <button className="btn-orange" onClick={() => navigate("/quiz", {state:selectedQuiz})}>Start Quiz</button>
-                <button className="btn-orange-outline" onClick={() => navigate("/history")}>Check Your History</button>
-                <p>Latest quiz result:</p>
-                <p>{latest && latest.points}/{latest && latest.totalQuestions}pts | {latest && latest.date}</p>
             </div>
         </div>
     );
