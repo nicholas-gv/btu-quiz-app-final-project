@@ -1,5 +1,5 @@
 import React from "react";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../api/useFetch";
 import "./Quiz.css";
 import QuizQuestion from "./QuizQuestion.jsx";
 import ErrorBoundary from "../ErrorBoundary";
@@ -15,8 +15,6 @@ function Quiz(props) {
         currentTime: time,
         url: "quiz.json",
         quiz: state
-        // url: "db.json"
-        // url: "http://my-json-server.typicode.com/DanielBarbakadze/Advanced-JS-and-React-Basics/db"
     });
 
     if (!questions) {

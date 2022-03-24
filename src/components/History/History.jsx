@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Base.css";
+import "./History.css";
 import ContextMenu from "./ContextMenu";
 
 
@@ -19,9 +20,9 @@ function History() {
             <h1 className="page-title">History</h1>
             <div>
                 <button className="btn-orange" onClick={() => navigate("/")}>Home</button>
-                <ul>
+                <ul className="history-entries-list">
                     {history && history.map((el, i) => (
-                        <div key={i} className="history-entry">
+                        <div key={i} index={i} className="history-entry">
                             <li >{el.points}/{el.totalQuestions}pts | {el.date}</li>
                             <ContextMenu></ContextMenu>
                         </div>

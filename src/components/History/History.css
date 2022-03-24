@@ -10,6 +10,16 @@
     flex-direction: column;
 }
 
+.history-entries-list {
+
+}
+
 .history-entry {
     display: flex;
+    margin: 7px;
 }
+
+.delete-btn {
+    border-radius: 7px;
+}
+

@@ -17,13 +17,12 @@ const useFetch = (data) => {
                 let time = new Date().getTime();
                 let item = {
                     data: res.quizes[quizNum],
-                    expiry: time+600000
+                    expiry: time+60000
                 };
                 localStorage.setItem(data.key, JSON.stringify(item));
                 setQuestions(res.quizes[quizNum]);
         });
         } else if (localStorage.getItem(data.key)) {
-            // console.log("here2")
             let res = JSON.parse(localStorage.getItem(data.key)).data;
             setQuestions(res);
         }
