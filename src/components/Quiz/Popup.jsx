@@ -7,23 +7,17 @@ import { useNavigate } from "react-router-dom";
 const Popup = (props) => {
     const navigate = useNavigate();
 
-    const  handleOutsideClick = (e) => {
-        if (e.target === document.getElementsByClassName("main")[0]) {
-            document.getElementsByClassName("popup-main")[0].style.display = "none";
-            document.getElementsByClassName("main")[0].style.display = "none";
-        }
+    const  handleOutsideClick = () => {
+        props.setShowPopup(false);
     }
 
     const handleSaveHistory = () => {
-        document.getElementsByClassName("popup-main")[0].style.display="none";
-        document.getElementsByClassName("main")[0].style.display = "none";
-
         let key = "history";
         let item = {
             quizID: props.quizID,
-            points: props.points,
+            points: props.data.points,
             totalQuestions: props.totalQuestions,
-            date: props.date
+            date: props.data.date
         };
 
         if (!localStorage.getItem(key)) {

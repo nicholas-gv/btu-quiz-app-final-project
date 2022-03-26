@@ -33,6 +33,7 @@ const QuizQuestion = (props) => {
         }
     }
 
+
     const handleSubmit = () => {
         let answer;
         let li = (props.data.questions[activeQuestion].type==="boolean") ? 
@@ -63,6 +64,7 @@ const QuizQuestion = (props) => {
         document.getElementById("gradbox").style.backgroundImage = 
             `linear-gradient(to right, #ff9500 ${progressBarShare}%,rgba(0,0,0,0)${progressBarShare}%)`;
     }
+
 
     const handleChooseOption = (e) => {
         const parent = e.target.parentElement;

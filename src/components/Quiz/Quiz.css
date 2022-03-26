@@ -53,7 +53,6 @@
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 1;
-    display: none;
 }
 
 .popup-main {
@@ -63,7 +62,6 @@
     margin: 200px auto 0 auto;
     padding: 50px 0;
     border-radius: 10px;
-    display: none; 
     z-index: 2; 
 }
 
