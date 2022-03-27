@@ -22,7 +22,9 @@ function History() {
                 <button className="btn-orange" onClick={() => navigate("/")}>Home</button>
                 <ul className="history-entries-list">
                     {history && history.map((el, i) => (
-                        <li key={i} index={i} className="history-entry">{el.quizID && `Quiz#${el.quizID} |`}  {el.points}/{el.totalQuestions}pts | {el.date}
+                        <li key={i} index={i} className="history-entry">
+                            {el.quizID && `Quiz #${el.quizID} |`} {el.points}/{el.totalQuestions}pts 
+                            ({Number.parseInt(el.points*100/el.totalQuestions)}%) | {el.date}
                             <ContextMenu></ContextMenu>
                         </li>
                     ))}

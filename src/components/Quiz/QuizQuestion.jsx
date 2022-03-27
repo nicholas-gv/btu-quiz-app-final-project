@@ -168,7 +168,9 @@ const QuizQuestion = (props) => {
             </button>
             <button className="btn-white" id="nextBtn" onClick={handleNext} style={{display: "none"}}>Next</button>
             <div id="gradbox">
-                <p style={{color:"white"}}>{activeQuestion}/{props.data.questions.length}</p>
+                <p style={{color:"white"}}>
+                    {activeQuestion}/{props.data.questions.length} ({Number.parseInt(activeQuestion*100/props.data.questions.length)}%)
+                </p>
             </div>
         </div>
     );

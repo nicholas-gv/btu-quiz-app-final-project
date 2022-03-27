@@ -68,3 +68,7 @@
 .popup-main > * {
     margin: 5px;
 }
+
+.quiz-results-div > * {
+    margin: 5px
+}
