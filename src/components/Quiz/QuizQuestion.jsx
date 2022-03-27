@@ -61,8 +61,23 @@ const QuizQuestion = (props) => {
 
         let questionsAmount = props.data.questions.length;
         let progressBarShare = (activeQuestion+1)/questionsAmount*100;
-        document.getElementById("gradbox").style.backgroundImage = 
-            `linear-gradient(to right, #ff9500 ${progressBarShare}%,rgba(0,0,0,0)${progressBarShare}%)`;
+        var id = null;
+        
+        const animateProgressBar = () => {
+            clearInterval(id);
+            let pos = (activeQuestion)/questionsAmount*100;
+            id = setInterval(() => {
+                if (pos===progressBarShare) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    document.getElementById("gradbox").style.backgroundImage = 
+                    `linear-gradient(to right, #ff9500 ${pos}%,rgba(0,0,0,0)${pos}%)`;
+                }
+            }, 5);
+        }
+
+        animateProgressBar();
     }
 
 
