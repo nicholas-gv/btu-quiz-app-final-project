@@ -1,6 +1,6 @@
 import React from "react";
-import "./Quiz.css"
-import "../Base.css"
+import "./Quiz/Quiz.css"
+import "./Base.css"
 import { useNavigate } from "react-router-dom";
 
 

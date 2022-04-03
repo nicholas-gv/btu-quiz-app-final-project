@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "../Base.css";
 import "./Quiz.css";
-import Popup from "./Popup";
+import Popup from "../Popup";
 import { useNavigate } from "react-router-dom";
 
 
