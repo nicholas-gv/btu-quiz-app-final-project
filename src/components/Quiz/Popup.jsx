@@ -39,7 +39,7 @@ const Popup = (props) => {
     }
 
     return (
-        <div className="main" onClick={handleOutsideClick}>
+        <div className="shadow-main" onClick={handleOutsideClick}>
             <div className="popup-main">
                 <p>Do you want to save this attempt?</p>
                 <button className="btn-orange" onClick={handleSaveHistory}>Yes</button>
