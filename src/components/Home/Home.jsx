@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../Base.css";
 import { useNavigate } from "react-router-dom";
-import quizImage from "./images/quiz1.png"
+import quizImage from "./images/quiz1-v1.png"
 
 
 function Home() {
@@ -24,7 +24,7 @@ function Home() {
 
     const handleSelectChange = (e) => {
         setSelectedQuiz(e.target.value);
-        quizImage= images(`./${e.target.value}.png`)
+        quizImage= images(`./${e.target.value}-v1.png`)
     }
 
     return (

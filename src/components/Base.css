@@ -19,9 +19,9 @@ h1 {
 .page {
   padding: 40px;
   background-color: #fff;
-  width: 70vw;
+  width: 72vw;
   border-radius: 10px;
-  height: 650px;
+  min-height: 680px;
   animation: fadein 0.3s;
 }
 
@@ -135,6 +135,7 @@ h1 {
 
 .quiz-primary-image {
   width: 450px;
+  border-radius: 3px;
 }
 
 .context-menu {
