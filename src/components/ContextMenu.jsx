@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./Base.css"
+import ContextMenuItem from "./ContextMenuItem";
 
 
 const ContextMenu = (props) => {
@@ -19,8 +20,12 @@ const ContextMenu = (props) => {
     return (
         <div className="shadow-main" onClick={handleOutsideClick} onContextMenu={handleOutsideClick}>
             <div id="active-context-menu" className="context-menu">
-                <button>confirm</button>
-                <button>cancel</button>
+                <ContextMenuItem>Action 1</ContextMenuItem>
+                <ContextMenuItem>Action 2</ContextMenuItem>
+                <ContextMenuItem>Action 3</ContextMenuItem>
+                <ContextMenuItem>Action 4</ContextMenuItem>
+                <ContextMenuItem>Action 5</ContextMenuItem>
+                <ContextMenuItem>Cancel</ContextMenuItem>
             </div>
         </div>
     )

@@ -146,9 +146,15 @@ h1 {
   display: flex;
   flex-direction: column;
   border-radius: 7px;
-  box-shadow: 2px 2px #d3dae3;
+  box-shadow: 2px 2px #eef1f5;
+  animation: fadein 0.1s;
+  transition: 0.1s ease;
 }
 
+.context-menu-item {
+  text-decoration: underline 1px solid #eceef1;
+  margin: 5px;
+}
 
 .shadow-main {
   position: absolute;
@@ -172,4 +178,13 @@ h1 {
 
 .popup-main > * {
   margin: 5px;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
