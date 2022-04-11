@@ -43,6 +43,11 @@ function History() {
                 <ul className="history-entries-list">
                     {history && history.map((el, i) => (
                         <li key={i} index={i} className="history-entry" onContextMenu={handleContextMenuClick}>
+                            <div className={
+                                (el.points*100/el.totalQuestions>=75 && "score-sign color-green") ||
+                                (el.points*100/el.totalQuestions<75 && el.points*100/el.totalQuestions>=50 && "score-sign color-yellow") ||
+                                (el.points*100/el.totalQuestions<50 && "score-sign color-red") }>
+                            </div>
                             {el.quizID && `Quiz #${el.quizID} |`} {el.points}/{el.totalQuestions}pts 
                             ({Number.parseInt(el.points*100/el.totalQuestions)}%) | <p id="date">{el.date}</p>
                             <img width="15" src="trash-can-solid.svg" alt="delete-icon" onClick={onDeleteClick}/>
