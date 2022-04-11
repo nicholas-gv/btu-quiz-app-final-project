@@ -2,6 +2,7 @@ import React from "react";
 import "./Quiz/Quiz.css"
 import "./Base.css"
 import { useNavigate } from "react-router-dom";
+import PopupMenuItem from "./PopupMenuItem";
 
 
 const Popup = (props) => {
@@ -42,8 +43,8 @@ const Popup = (props) => {
         <div className="shadow-main" onClick={handleOutsideClick}>
             <div className="popup-main">
                 <p>Do you want to save this attempt?</p>
-                <button className="btn-orange" onClick={handleSaveHistory}>Yes</button>
-                <button className="btn-orange" onClick={() => navigate("/")}>No</button>
+                <PopupMenuItem onClick={handleSaveHistory}>Yes</PopupMenuItem>
+                <PopupMenuItem onClick={() => navigate("/")}>No</PopupMenuItem>
             </div>
         </div>
     )
