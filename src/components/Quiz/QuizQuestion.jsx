@@ -17,13 +17,22 @@ const QuizQuestion = (props) => {
     
 
     const handleNext = () => {
+
         let questionsAmount = props.data.questions.length;
+
         if (questionsAmount>activeQuestion+1) {
             setActiveQuestion(activeQuestion+1);
             setChosenAnswers();
             document.getElementsByClassName("question-box")[0].style.backgroundColor = "";
             document.getElementById("nextBtn").style.display = "none";
             setQuestionUnanswered(true);
+
+            document.getElementsByClassName("question-box")[0].childNodes.forEach((val, i) => {
+                if (val.className==="boolean-answer" || val.className==="single-answer" ||
+                    val.className==="multiple-answer") {
+                        val.style.border="none"
+                    }
+            })
         } else {
             document.getElementById("gradbox").style.display = "none";
             document.getElementById("page-title").textContent = "Quiz Results:";
@@ -35,6 +44,7 @@ const QuizQuestion = (props) => {
 
 
     const handleSubmit = () => {
+
         let answer;
         let li = (props.data.questions[activeQuestion].type==="boolean") ? 
             chosenAnswers[0] : chosenAnswers.map((el) => parseInt(el));
@@ -71,17 +81,20 @@ const QuizQuestion = (props) => {
                     clearInterval(id);
                 } else {
                     pos++;
-                    document.getElementById("gradbox").style.backgroundImage = 
-                    `linear-gradient(to right, #ff9500 ${pos}%,rgba(0,0,0,0)${pos}%)`;
+                    if (document.getElementById("gradbox")) {
+                        document.getElementById("gradbox").style.backgroundImage = 
+                        `linear-gradient(to right, #ff9500 ${pos}%,rgba(0,0,0,0)${pos}%)`;
+                    }
                 }
             }, 5);
         }
 
-        animateProgressBar();
+        if (isQuizDone===false) animateProgressBar();
     }
 
 
     const handleChooseOption = (e) => {
+        
         const parent = e.target.parentElement;
         const questionIdentifier = e.target.getAttribute("myKey");
 
