@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../Base.css";
 import "./History.css";
 import ContextMenu from "../ContextMenu"
+import ContextMenuItem from "../ContextMenuItem";
 
 
 function History() {
@@ -53,7 +54,15 @@ function History() {
                             <img width="15" src="trash-can-solid.svg" alt="delete-icon" onClick={onDeleteClick}/>
                         </li>
                     ))}
-                    {showContextMenu && <ContextMenu pos={position} setShowContextMenu={setShowContextMenu}/>}
+                    {showContextMenu && 
+                    <ContextMenu pos={position} setShowContextMenu={setShowContextMenu}>
+                        <ContextMenuItem>Action 1</ContextMenuItem>
+                        <ContextMenuItem>Action 2</ContextMenuItem>
+                        <ContextMenuItem>Action 3</ContextMenuItem>
+                        <ContextMenuItem>Action 4</ContextMenuItem>
+                        <ContextMenuItem>Action 5</ContextMenuItem>
+                        <ContextMenuItem>Cancel</ContextMenuItem>
+                    </ContextMenu>}
                 </ul>
             </div>
         </div>

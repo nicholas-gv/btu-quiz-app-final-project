@@ -79,17 +79,17 @@ const QuizQuestion = (props) => {
             id = setInterval(() => {
                 if (pos===progressBarShare) {
                     clearInterval(id);
+                } else if (!document.getElementById("gradbox")) {
+                    clearInterval(id);
                 } else {
                     pos++;
-                    if (document.getElementById("gradbox")) {
-                        document.getElementById("gradbox").style.backgroundImage = 
+                    document.getElementById("gradbox").style.backgroundImage = 
                         `linear-gradient(to right, #ff9500 ${pos}%,rgba(0,0,0,0)${pos}%)`;
-                    }
                 }
             }, 5);
         }
 
-        if (isQuizDone===false) animateProgressBar();
+        animateProgressBar();
     }
 
 

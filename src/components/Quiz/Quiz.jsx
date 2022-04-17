@@ -30,7 +30,7 @@ function Quiz(props) {
     return (
         <ErrorBoundary>
             <div className="page">
-                <h1 id="page-title">Quiz</h1>
+                <h1 id="page-title">Quiz {questions.id}</h1>
                 <QuizQuestion data={questions} id="d1"></QuizQuestion>
             </div>
         </ErrorBoundary>
