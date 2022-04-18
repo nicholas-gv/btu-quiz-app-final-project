@@ -4,8 +4,7 @@ import "./Quiz.css";
 import QuizBooleanAnswer from "./QuizBooleanAnswer.jsx";
 import QuizMultipleAnswer from "./QuizMultipleAnswer.jsx";
 import QuizSingleAnswer from "./QuizSingleAnswer.jsx";
-import { useNavigate } from "react-router-dom";
-import Popup from "./Popup";
+import QuizResults from "./QuizResults";
 
 
 const QuizQuestion = (props) => {
@@ -15,16 +14,25 @@ const QuizQuestion = (props) => {
     const [points, setPoints] = useState(0);
     const [date, setDate] = useState();
     const [isQuizDone, setIsQuizDone] = useState(false);
-    const navigate = useNavigate();
+    
 
     const handleNext = () => {
+
         let questionsAmount = props.data.questions.length;
+
         if (questionsAmount>activeQuestion+1) {
             setActiveQuestion(activeQuestion+1);
             setChosenAnswers();
             document.getElementsByClassName("question-box")[0].style.backgroundColor = "";
             document.getElementById("nextBtn").style.display = "none";
             setQuestionUnanswered(true);
+
+            document.getElementsByClassName("question-box")[0].childNodes.forEach((val, i) => {
+                if (val.className==="boolean-answer" || val.className==="single-answer" ||
+                    val.className==="multiple-answer") {
+                        val.style.border="none"
+                    }
+            })
         } else {
             document.getElementById("gradbox").style.display = "none";
             document.getElementById("page-title").textContent = "Quiz Results:";
@@ -34,7 +42,9 @@ const QuizQuestion = (props) => {
         }
     }
 
+
     const handleSubmit = () => {
+
         let answer;
         let li = (props.data.questions[activeQuestion].type==="boolean") ? 
             chosenAnswers[0] : chosenAnswers.map((el) => parseInt(el));
@@ -48,7 +58,6 @@ const QuizQuestion = (props) => {
         }
         
         
-        // console.log(JSON.stringify(li)+"==="+answer)
         if (JSON.stringify(li)===answer) {
             document.getElementsByClassName("question-box")[0].style.backgroundColor = "#56b004";
             document.getElementById("nextBtn").style.display = "inline-block";
@@ -62,11 +71,30 @@ const QuizQuestion = (props) => {
 
         let questionsAmount = props.data.questions.length;
         let progressBarShare = (activeQuestion+1)/questionsAmount*100;
-        document.getElementById("gradbox").style.backgroundImage = 
-            `linear-gradient(to right, #ff9500 ${progressBarShare}%,rgba(0,0,0,0)${progressBarShare}%)`;
+        var id = null;
+        
+        const animateProgressBar = () => {
+            clearInterval(id);
+            let pos = (activeQuestion)/questionsAmount*100;
+            id = setInterval(() => {
+                if (pos===progressBarShare) {
+                    clearInterval(id);
+                } else if (!document.getElementById("gradbox")) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    document.getElementById("gradbox").style.backgroundImage = 
+                        `linear-gradient(to right, #ff9500 ${pos}%,rgba(0,0,0,0)${pos}%)`;
+                }
+            }, 5);
+        }
+
+        animateProgressBar();
     }
 
+
     const handleChooseOption = (e) => {
+        
         const parent = e.target.parentElement;
         const questionIdentifier = e.target.getAttribute("myKey");
 
@@ -122,21 +150,8 @@ const QuizQuestion = (props) => {
         }
     }
 
-    const handlePopupButtonClick = () => {
-        document.getElementsByClassName("popup-main")[0].style.display="block";
-        document.getElementsByClassName("main")[0].style.display="block";
-    }
-
-
     if (isQuizDone) {
-        return (
-            <>
-                <p> {points}/{props.data.questions.length}pts | {date} </p>
-                <Popup data={{points,date}}></Popup>
-                <button className="btn-orange" onClick={handlePopupButtonClick}>Try Again?</button>
-                <button className="btn-orange" onClick={() => navigate("/history")}>See Attempts History</button>
-            </>
-        )
+        return <QuizResults data={{points,date}} questions={props.data.questions} quizID={props.data.id}></QuizResults>
     }
 
     return (
@@ -180,6 +195,11 @@ const QuizQuestion = (props) => {
                 onClick={(chosenAnswers && questionUnanswered) ? handleSubmit : undefined }>Submit Answer
             </button>
             <button className="btn-white" id="nextBtn" onClick={handleNext} style={{display: "none"}}>Next</button>
+            <div id="gradbox">
+                <p style={{color:"white"}}>
+                    {activeQuestion}/{props.data.questions.length} ({Number.parseInt(activeQuestion*100/props.data.questions.length)}%)
+                </p>
+            </div>
         </div>
     );
 }

@@ -1,17 +1,20 @@
 import React from "react";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../api/useFetch";
 import "./Quiz.css";
 import QuizQuestion from "./QuizQuestion.jsx";
 import ErrorBoundary from "../ErrorBoundary";
 import { Watch } from "react-loader-spinner";
+import { useLocation } from "react-router-dom";
 
 
-function Quiz() {
+function Quiz(props) {
     const time = new Date().getTime();
+    const { state } = useLocation();
     const [questions] = useFetch({
         key: "questions",
         currentTime: time,
-        url: "http://my-json-server.typicode.com/DanielBarbakadze/Advanced-JS-and-React-Basics/db"
+        url: "quiz.json",
+        quiz: state
     });
 
     if (!questions) {
@@ -27,9 +30,8 @@ function Quiz() {
     return (
         <ErrorBoundary>
             <div className="page">
-                <h1 id="page-title">Quiz</h1>
-                <QuizQuestion data={questions} id="d1" question="question1"></QuizQuestion>
-                <div id="gradbox"> </div>
+                <h1 id="page-title">Quiz {questions.id}</h1>
+                <QuizQuestion data={questions} id="d1"></QuizQuestion>
             </div>
         </ErrorBoundary>
     );
