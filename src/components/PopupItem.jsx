@@ -2,7 +2,7 @@ import React from "react";
 import "./Base.css"
 
 
-const PopupMenuItem = (props) => {
+const PopupItem = (props) => {
 
     return (
         <button onClick={props.onClick} className="btn-orange">
@@ -12,4 +12,4 @@ const PopupMenuItem = (props) => {
 
 }
 
-export default PopupMenuItem;
+export default PopupItem;
