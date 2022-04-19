@@ -76,8 +76,9 @@ const QuizQuestion = (props) => {
         const animateProgressBar = () => {
             clearInterval(id);
             let pos = (activeQuestion)/questionsAmount*100;
+            console.log(pos, progressBarShare);
             id = setInterval(() => {
-                if (pos===progressBarShare) {
+                if (parseInt(pos)===parseInt(progressBarShare)) {
                     clearInterval(id);
                 } else if (!document.getElementById("gradbox")) {
                     clearInterval(id);
