@@ -14,6 +14,7 @@ const QuizQuestion = (props) => {
     const [points, setPoints] = useState(0);
     const [date, setDate] = useState();
     const [isQuizDone, setIsQuizDone] = useState(false);
+    const [progressBarIndicator, setProgressBarIndicator] = useState(0);
     
 
     const handleNext = () => {
@@ -70,13 +71,12 @@ const QuizQuestion = (props) => {
         }
 
         let questionsAmount = props.data.questions.length;
-        let progressBarShare = (activeQuestion+1)/questionsAmount*100;
+        let progressBarShare = (progressBarIndicator+1)/questionsAmount*100;
         var id = null;
         
         const animateProgressBar = () => {
             clearInterval(id);
-            let pos = (activeQuestion)/questionsAmount*100;
-            console.log(pos, progressBarShare);
+            let pos = (progressBarIndicator)/questionsAmount*100;
             id = setInterval(() => {
                 if (parseInt(pos)===parseInt(progressBarShare)) {
                     clearInterval(id);
@@ -91,6 +91,7 @@ const QuizQuestion = (props) => {
         }
 
         animateProgressBar();
+        setProgressBarIndicator(progressBarIndicator+1);
     }
 
 
@@ -198,7 +199,7 @@ const QuizQuestion = (props) => {
             <button className="btn-white" id="nextBtn" onClick={handleNext} style={{display: "none"}}>Next</button>
             <div id="gradbox">
                 <p style={{color:"white"}}>
-                    {activeQuestion}/{props.data.questions.length} ({Number.parseInt(activeQuestion*100/props.data.questions.length)}%)
+                    {progressBarIndicator}/{props.data.questions.length} ({Number.parseInt(progressBarIndicator*100/props.data.questions.length)}%)
                 </p>
             </div>
         </div>
