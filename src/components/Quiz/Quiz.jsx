@@ -13,7 +13,7 @@ function Quiz(props) {
     const [questions] = useFetch({
         key: "questions",
         currentTime: time,
-        url: "quiz.json",
+        url: "db.json",
         quiz: state
     });
 
